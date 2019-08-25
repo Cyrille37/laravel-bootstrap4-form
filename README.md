@@ -3,6 +3,8 @@ Forked
 
 Forked https://github.com/dwightwatson/bootstrap-form to be compatible with Bootstrap 4.
 
+see also another project: https://github.com/netojose/laravel-bootstrap-4-forms
+
 BootstrapForm, forms for Laravel 5
 ==================================
 
