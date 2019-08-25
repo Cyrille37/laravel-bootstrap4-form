@@ -706,7 +706,11 @@ class BootstrapForm
     {
         $prefix = array_get($options, 'prefix', $this->getIconPrefix());
 
-        return '<div class="input-group-addon"><span ' . $this->html->attributes($options) . '><i class="'.$prefix.$icon.'"></i></span></div>';
+        if( ! isset($options['class']) )
+            $options['class'] = 'input-group-text' ;
+        else
+            $options['class'] .= ' input-group-text' ;
+        return '<div class="input-group-prepend"><span ' . $this->html->attributes($options) . '><i class="'.$prefix.$icon.'"></i></span></div>';
     }
 
     /**

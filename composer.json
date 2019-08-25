@@ -1,12 +1,15 @@
 {
-    "name": "watson/bootstrap-form",
-    "description": "Laravel 5 form wrappers for Bootstrap 3.",
+    "name": "cyrille37/laravel-bootstrap4-form",
+    "description": "Laravel 5 form wrappers for Bootstrap 4.",
     "keywords": ["laravel", "form", "bootstrap"],
     "license": "MIT",
     "authors": [
         {
             "name": "Dwight Watson",
             "email": "dwightwatson@me.com"
+        },
+        {
+            "name": "Cyrille37"
         }
     ],
     "require": {
