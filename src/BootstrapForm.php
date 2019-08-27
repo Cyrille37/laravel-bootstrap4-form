@@ -344,7 +344,21 @@ class BootstrapForm
     {
         return $this->input('number', $name, $label, $value, $options);
     }
-
+    
+    /**
+     * Create a Bootstrap date field input.
+     *
+     * @param  string  $name
+     * @param  string  $label
+     * @param  string  $value
+     * @param  array   $options
+     * @return string
+     */
+    public function datetime($name, $label = null, $value = null, array $options = [])
+    {
+        return $this->input('datetime', $name, $label, $value, $options);
+    }
+    
     /**
      * Create a Bootstrap date field input.
      *
@@ -655,8 +669,8 @@ class BootstrapForm
             $inputElement .= $options['suffix'];
         }
 
-         if(isset($options['prefix']) || isset($options['suffix'])) {
-            $inputElement = '<div class="input-group">' . $inputElement . '</div>';
+        if(isset($options['prefix']) || isset($options['suffix']) ) {
+            $inputElement = '<div class="input-group '.$type.'">' . $inputElement . '</div>';
         }
 
         $wrapperOptions = $this->isHorizontal() ? ['class' => $this->getRightColumnClass()] : [];
@@ -692,17 +706,27 @@ class BootstrapForm
      */
     public function addonText($text, $options = [])
     {
-        return '<div class="input-group-addon"><span ' . $this->html->attributes($options) . '>'.$text.'</span></div>';
+        return '<div class="input-group-append"><span ' . $this->html->attributes($options) . '>'.$text.'</span></div>';
+    }
+
+    public function suffixIcon($icon, $options = [])
+    {
+        return $this->addonIcon($icon, 'append', $options );
+    }
+    public function prefixIcon($icon, $options = [])
+    {
+        return $this->addonIcon($icon, 'prepend', $options );
     }
 
     /**
      * Create an addon icon element.
      *
-     * @param  string  $icon
-     * @param  array  $options
+     * @param  string $icon
+     * @param  string $position Bootstrap4 position: append or prepend
+     * @param  string[] $options
      * @return string
      */
-    public function addonIcon($icon, $options = [])
+    public function addonIcon($icon, $position, $options = [])
     {
         $prefix = array_get($options, 'prefix', $this->getIconPrefix());
 
@@ -710,7 +734,7 @@ class BootstrapForm
             $options['class'] = 'input-group-text' ;
         else
             $options['class'] .= ' input-group-text' ;
-        return '<div class="input-group-prepend"><span ' . $this->html->attributes($options) . '><i class="'.$prefix.$icon.'"></i></span></div>';
+        return '<div class="input-group-'.$position.'"><span ' . $this->html->attributes($options) . '><i class="'.$prefix.$icon.'"></i></span></div>';
     }
 
     /**
