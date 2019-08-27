@@ -1,7 +1,7 @@
 Forked
 ======
 
-Forked from https://github.com/dwightwatson/bootstrap-form to be compatible with Bootstrap 4. It depends on https://github.com/LaravelCollective/.
+Forked from https://github.com/dwightwatson/bootstrap-form to be compatible with Bootstrap 4. It depends on [LaravelCollective/Html 5.4](https://github.com/LaravelCollective/docs/blob/5.4/html.md).
 
 see also another project: https://github.com/netojose/laravel-bootstrap-4-forms
 
