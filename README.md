@@ -249,10 +249,12 @@ Add prefix and/or suffix to any input - you can add text, icon and buttons.
 {!! BootForm::text('tel', 'Phone', null, ['prefix' => BootForm::addonButton('Call', ['class' => 'btn-success'])] ) !!}
 
 // Prefix icon (I put second parameter after <i class="fa fa-SECOND_PARAMETER"></i>) with 'dollar' as icon
-{!! BootForm::text('tel', 'Phone', null, ['prefix' => BootForm::addonIcon('dollar')] ) !!}
+{!! BootForm::text('tel', 'Phone', null, ['prefix' => BootForm::addonIcon('dollar', 'append')] ) !!}
+or {!! BootForm::text('tel', 'Phone', null, ['prefix' => BootForm::prefixIcon('dollar')] ) !!}
 
 // Prefix and suffix as text
-{!! BootForm::text('tel', 'Phone', null, ['prefix' => BootForm::addonText('1-'), 'suffix' => BootForm::addonIcon('phone')] ) !!}
+{!! BootForm::text('tel', 'Phone', null, ['prefix' => BootForm::addonText('1-','prepend'), 'suffix' => BootForm::addonIcon('phone','append')] ) !!}
+or {!! BootForm::text('tel', 'Phone', null, ['prefix' => BootForm::prefixText('1-'), 'suffix' => BootForm::suffixIcon('phone')] ) !!}
 
 // Prefix and suffix with button
 {!! BootForm::text('tel', 'Phone', null, ['suffix' => BootForm::addonButton('Boom!', ['class' => 'btn-danger']), 'prefix' => BootForm::addonButton('Call', ['class' => 'btn-success'])] ) !!}

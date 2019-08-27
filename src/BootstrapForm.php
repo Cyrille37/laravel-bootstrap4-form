@@ -697,6 +697,15 @@ class BootstrapForm
         return '<div class="input-group-btn"><button ' . $this->html->attributes($attributes) . '>'.$label.'</button></div>';
     }
 
+    public function suffixText($text, $options = [])
+    {
+        return $this->addonText($text, 'append', $options );
+    }
+    public function prefixText($text, $options = [])
+    {
+        return $this->addonText($text, 'prepend', $options );
+    }
+
     /**
      * Create an addon text element.
      *
@@ -704,9 +713,9 @@ class BootstrapForm
      * @param  array  $options
      * @return string
      */
-    public function addonText($text, $options = [])
+    public function addonText($text, $position, $options = [])
     {
-        return '<div class="input-group-append"><span ' . $this->html->attributes($options) . '>'.$text.'</span></div>';
+        return '<div class="input-group-'.$position.'"><span ' . $this->html->attributes($options) . '>'.$text.'</span></div>';
     }
 
     public function suffixIcon($icon, $options = [])
