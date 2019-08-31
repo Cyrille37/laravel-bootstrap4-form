@@ -655,6 +655,12 @@ class BootstrapForm
     {
         $label = $this->getLabelTitle($label, $name);
 
+        // option "disabled" with "true" or "false"
+        if( isset($options['disabled']) && $options['disabled'] != true )
+        {
+            unset($options['disabled']);
+        }
+
         $optionsField = $this->getFieldOptions(array_except($options, ['suffix', 'prefix']), $name);
 
         $inputElement = '';
@@ -773,7 +779,15 @@ class BootstrapForm
     {
         $label = $this->getLabelTitle($label, $name);
 
-        $inputElement = isset($options['prefix']) ? $options['prefix'] : '';
+        // option "disabled" with "true" or "false"
+        if( isset($options['disabled']) && $options['disabled'] != true )
+        {
+            unset($options['disabled']);
+        }
+
+        $inputElement = isset($options['prefix'])
+            ? $options['prefix']
+            : '';
 
         $options = $this->getFieldOptions($options, $name);
         $inputElement .= $this->form->select($name, $list, $selected, $options);
