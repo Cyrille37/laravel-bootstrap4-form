@@ -7,6 +7,7 @@ use Collective\Html\FormBuilder;
 use Collective\Html\HtmlBuilder;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Session\SessionManager as Session;
 use Illuminate\Contracts\Config\Repository as Config;
@@ -1096,9 +1097,16 @@ class BootstrapForm
      */
     public function flattenFieldName($field)
     {
+        // remove lang suffix "field:lang"
+        $field = preg_replace_callback('/([a-z0-9]+):([a-z0-9]+)/', function ($matches) {
+            if (!empty($matches[1]) )
+                return $matches[1];
+            
+        }, $field);
+
         return preg_replace_callback("/\[(.*)\\]/U", function ($matches) {
             if (!empty($matches[1]) || $matches[1] === '0') {
-                return "." . $matches[1];
+                return '.' . $matches[1];
             }
         }, $field);
     }
@@ -1125,8 +1133,10 @@ class BootstrapForm
     protected function getFieldError($field, $format = '<span class="help-block">:message</span>')
     {
         $field = $this->flattenFieldName($field);
+        //Log::debug( __METHOD__.' search error for field:['.$field.']');
 
-        if ($this->getErrors()) {
+        if ($this->getErrors())
+        {
             $allErrors = $this->config->get('bootstrap_form.show_all_errors');
 
             if ($this->getErrorBag()) {
