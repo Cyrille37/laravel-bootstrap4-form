@@ -113,7 +113,7 @@ $user = new User;
 BootForm::open()
 ```
 
-#### Pass parent argument for nested relation
+#### Pass parent argument for nested relation
 
 If the route need some parameters, like route for a nested relation, you can pass them by replacing the route or action name string by an array. The first entry is the string for route name, next entries are key/value pair of route parameters.
 
