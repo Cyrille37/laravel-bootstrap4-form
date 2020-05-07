@@ -113,15 +113,19 @@ $user = new User;
 BootForm::open()
 ```
 
-If the route need some parameters you can pass them like this, replace the route or action name string by an array. The first entry is the string for route name, next entries are key/value pair of route parameters.
+#### Pass parent argument for nested relation
+
+If the route need some parameters, like route for a nested relation, you can pass them by replacing the route or action name string by an array. The first entry is the string for route name, next entries are key/value pair of route parameters.
 
 ```php
 BootForm::open([
  ...
- 'update' => ['name.of.route.with.parameters', 'arg1'=>$arg1],
+ 'update' => ['name.of.route', 'arg1'=>$arg1],
  ...
 ])
 ```
+
+example: for a route `/post/{post}/comments/create` you must provide the `post` argument so you will declare the `store` argument like `'store' => ['posts.comments.create', 'post'=>$post]`.
 
 ### Form variations
 
