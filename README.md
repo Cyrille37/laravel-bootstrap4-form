@@ -114,14 +114,14 @@ BootForm::open()
 ```
 
 If the route need some parameters you can pass them like this, replace the route or action name string by an array. The first entry is the string for route name, next entries are key/value pair of route parameters.
-```
+
+```php
 BootForm::open([
  ...
  'update' => ['name.of.route.with.parameters', 'arg1'=>$arg1],
  ...
 ])
 ```
-
 
 ### Form variations
 
